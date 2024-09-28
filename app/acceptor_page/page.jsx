@@ -7,8 +7,11 @@ const Page = () => {
   const [items, setItems] = useState([]); // Initialize as an empty array
   const [loading, setLoading] = useState(false); // To show a loading indicator
   const [error, setError] = useState(null); // To handle errors
-
-  // Logout function
+  const [add, setadd] = useState(false)
+  const address=()=>{
+    setadd(true)
+  }
+   // Logout function
   const Logout = () => {
     localStorage.clear();
     setTimeout(() => {
@@ -16,7 +19,7 @@ const Page = () => {
     }, 500);
   };
 
-  // Function to fetch data based on the selected category
+ 
   const fetchCategoryItems = async () => {
     try {
       setLoading(true); // Start loading
@@ -90,7 +93,7 @@ const Page = () => {
               style={{
                 padding: "10px 20px",
                 margin: "0px",
-                color: selected === "Electronics" ? "#4f46e5" : "white",
+                color: selected === "electronics" ? "#4f46e5" : "white",
                 border: "1px solid black",
                 cursor: "pointer",
               }}
@@ -138,7 +141,7 @@ const Page = () => {
           </div>
 
           {/* Render Category Items */}
-          <div>
+          <div className='h-[80%]'>
             {loading ? (
               <div className="text-gray-700 text-lg">Loading...</div>
             ) : error ? (
@@ -157,6 +160,7 @@ const Page = () => {
               </ul>
             )}
           </div>
+          <div className='grid w-[100%] text-white font-serif text-md place-items-center'><button onClick={address} className='bg-green-500 grid p-2 rounded-3xl place-items-center w-[20%]'>We can take this items</button></div>
         </div>
       </div>
     </>
