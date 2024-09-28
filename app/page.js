@@ -15,7 +15,7 @@ export default function Example() {
   
     useEffect(() => {
      
-      async function  checkAndLogin() {
+      async function  checkAndLogin () {
         
       {
         try {
