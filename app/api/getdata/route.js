@@ -5,9 +5,9 @@ import { Userid } from "./find_address"; // Ensure this imports your User model
 
 export async function POST(req) {
   try {
-    // Parse the request payload
+    
     const payload = await req.json();
-    const { email, value } = payload;
+    const { email} = payload;
 
     // Ensure Mongoose connection
     await mongoose.connect(connect, {
@@ -16,26 +16,19 @@ export async function POST(req) {
     });
 
     // Validate the required fields
-    if (!email || !value) {
+    if (!email) {
       throw new Error("Missing email or value in the request.");
     }
 
     // Ensure value is an array
-    const valuesToAdd = Array.isArray(value) ? value : [value];
-
-    // Update the user document based on the email and push the new values into the array
-    const user = await Userid.findOneAndUpdate(
-      { email: email }, // Find the user by email
-      { $push: { value: { $each: valuesToAdd } } }, // Use $push with $each to append multiple items to the value array
-      { new: true, upsert: true } // Return the updated document and create if not found
-    );
+    let user = await Userid.findOne({ email });
 
     // If user was not found or update failed, handle it here
     if (!user) {
       throw new Error("User not found or update failed.");
     }
 
-    // Return success response
+    
     return NextResponse.json({ success: true, user });
   } catch (error) {
     console.error("Error during the update process:", error.message);

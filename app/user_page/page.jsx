@@ -4,21 +4,55 @@ import "../globals.css";
 import React, { useState,useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import Profile from "../components/Profile";
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+import { FaSearch } from "react-icons/fa";
 
 const ImageGenerator = () => {
   const [output, setOutput] = useState([]); // To store AI response
   const [loading, setLoading] = useState(false);
+  const [data1, setdata1] = useState("")
   const [selectedCategory, setSelectedCategory] = useState(null); // Track selected category
   const [fileInput, setFileInput] = useState(null); // Store the uploaded image file
   const [showUploadForm, setShowUploadForm] = useState(false); // Toggle form visibility
+  const [input, setinput] = useState("")
+  const [display, setdisplay] = useState("")
   const categories = [
     { id: 1, name: "fashion", path: "/fashion", img: "/cloth.jpeg", questions: "what are the Fashion items present in this image , identify it with colour and give me it in the form for array without any extra text" },
     { id: 2, name: "accessories", path: "/accessories", img: "/accessories.jpg", questions: "what are the accessories items present in this image , identify it  and give me it in the form for array without any extra text" },
-    { id: 3, name: "homeProducts", path: "/homeprod", img: "/homeprod.avif", questions: "what are the Home Products present in this image , identify it with colour and give me it in the form for array without any extra text" },
+    { id: 3, name: "homeproducts", path: "/homeprod", img: "/homeprod.avif", questions: "what are the Home Products present in this image , identify it with colour and give me it in the form for array without any extra text" },
     { id: 4, name: "electronics", path: "/electronics", img: "/electronics.jpeg", questions: "what are the electronics items present in this image , identify it with colour and give me it in the form for array without any extra text" },
     { id: 5, name: "books", path: "/books", img: "/books.jpg", questions: "what are the bookes present in this image , identify it with colour and give me it in the form for array without any extra text" },
   ];
+const submit=async()=>{
+  const token = localStorage.getItem('Token');
+    if (!token) {
+      console.error('No token found');
+      return;
+    }
+  
+    const decoded = jwtDecode(token, '@deekshigowda');
+  const respon=await fetch("/api/getdata", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: decoded.email
+       // Predefined questions
+    }),
 
+  });
+  const data= await respon.json();
+  console.log(data.user.value);
+  setdata1(data.user.value)
+const good= JSON.stringify(data1, null, 2)
+  const genAI = new GoogleGenerativeAI("AIzaSyBqesLtJwXmltzUG21f-1T0vNUvRXTwotM");
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+const prompt = `${input}.if it is there in that data then just say "No you already have one" if it is not there in that data just say "You can have it" comparing to this ${good}. `;
+
+const result = await model.generateContent(prompt);
+setdisplay(result.response.text())
+  
+}
   useEffect(() => {
     if(selectedCategory){
     const token = localStorage.getItem('Token');
@@ -33,9 +67,9 @@ const ImageGenerator = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: decoded.email,
-          category: selectedCategory.name,
-          item: output, // Predefined questions
+          email: decoded.email,value:{category: selectedCategory.name,
+            item: output}
+           // Predefined questions
         }),
       });
     };
@@ -96,12 +130,19 @@ const ImageGenerator = () => {
             <span className="text-[45px] z-20 logo">CodeJS</span>
           </div>
           <div className="w-full max-w-sm min-w-[200px] relative">
-            <div className="relative">
+            <div className="relative flex">
               <input
-                type="email"
+                type="text"
+                value={input}
+                onChange={(e)=>{
+                  setinput(e.target.value)
+                  console.log(input);
+                  
+                }}
                 className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-3 pr-10 py-2"
                 placeholder="Enter your text"
               />
+              <button onClick={submit} className=" p-3 mx-2 bg-black rounded-full text-white"><FaSearch /></button>
             </div>
           </div>
           <div className="flex justify-center items-center pr-10 gap-10 text-[15px]">
@@ -113,6 +154,7 @@ const ImageGenerator = () => {
       </nav>
 
       <Profile />
+      {display && <div className="h-[10%] py-2 text-[10px] font-serif text-center w-[60%]">{display}</div>}
       <div className="flex w-[75%] h-[85vh] items-center justify-center">
         <div className="w-[85%] h-[85%] bg-[#0000000d] cshadow rounded-sm py-2 flex flex-col gap-3 centerbg">
           <div className="text-center text-[30px] font-semibold">Your Categories</div>
@@ -130,7 +172,7 @@ const ImageGenerator = () => {
             </div>
           </div>
 
-          {/* Show the form after selecting the category */}
+          
           {showUploadForm && (
             <div className="mt-5">
               <h3 className="text-[20px] font-semibold text-center">Upload Image for {selectedCategory.name}</h3>
@@ -141,12 +183,15 @@ const ImageGenerator = () => {
                 <button type="submit" className="bg-blue-500 text-white px-4 py-2">
                   Submit
                 </button>
+                
               </form>
             </div>
           )}
 
         </div>
+        
       </div>
+      
     </>
   );
 };
