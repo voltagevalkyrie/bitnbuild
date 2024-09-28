@@ -1,26 +1,53 @@
 "use client";
 import Image from "next/image";
 import "../globals.css";
-import React, { useState } from "react";
-
+import React, { useState,useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 import Profile from "../components/Profile";
 
 const ImageGenerator = () => {
-  const [output, setOutput] = useState(""); // To store AI response
+  const [output, setOutput] = useState([]); // To store AI response
   const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null); // Track selected category
   const [fileInput, setFileInput] = useState(null); // Store the uploaded image file
   const [showUploadForm, setShowUploadForm] = useState(false); // Toggle form visibility
-
-  // Categories
   const categories = [
-    { id: 1, name: "Fashion", path: "/fashion", img: "/cloth.jpeg", questions: "what are the Fashion items present in this image , identify it with colour and give me it in the form for array without any extra text" },
-    { id: 2, name: "Accessories", path: "/accessories", img: "/accessories.jpg", questions: "what are the accessories items present in this image , identify it  and give me it in the form for array without any extra text" },
-    { id: 3, name: "Home Products", path: "/homeprod", img: "/homeprod.avif", questions: "what are the Home Products present in this image , identify it with colour and give me it in the form for array without any extra text" },
-    { id: 4, name: "Electronics", path: "/electronics", img: "/electronics.jpeg", questions: "what are the electronics items present in this image , identify it with colour and give me it in the form for array without any extra text" },
-    { id: 5, name: "Books", path: "/books", img: "/books.jpg", questions: "what are the bookes present in this image , identify it with colour and give me it in the form for array without any extra text" },
+    { id: 1, name: "fashion", path: "/fashion", img: "/cloth.jpeg", questions: "what are the Fashion items present in this image , identify it with colour and give me it in the form for array without any extra text" },
+    { id: 2, name: "accessories", path: "/accessories", img: "/accessories.jpg", questions: "what are the accessories items present in this image , identify it  and give me it in the form for array without any extra text" },
+    { id: 3, name: "homeProducts", path: "/homeprod", img: "/homeprod.avif", questions: "what are the Home Products present in this image , identify it with colour and give me it in the form for array without any extra text" },
+    { id: 4, name: "electronics", path: "/electronics", img: "/electronics.jpeg", questions: "what are the electronics items present in this image , identify it with colour and give me it in the form for array without any extra text" },
+    { id: 5, name: "books", path: "/books", img: "/books.jpg", questions: "what are the bookes present in this image , identify it with colour and give me it in the form for array without any extra text" },
   ];
 
+  useEffect(() => {
+    if(selectedCategory){
+    const token = localStorage.getItem('Token');
+    if (!token) {
+      console.error('No token found');
+      return;
+    }
+  
+    const decoded = jwtDecode(token, '@deekshigowda');
+    const response = async () => {
+      await fetch("/api/addproductes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: decoded.email,
+          category: selectedCategory.name,
+          item: output, // Predefined questions
+        }),
+      });
+    };
+  
+    if (output) {
+      response(); // <--- Call the function here
+    }}
+  }, [output, selectedCategory]);
+  
+  
+  // Categories
+  
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     setShowUploadForm(true);
@@ -117,6 +144,7 @@ const ImageGenerator = () => {
               </form>
             </div>
           )}
+
         </div>
       </div>
     </>

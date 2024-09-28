@@ -19,7 +19,7 @@ const Profile = () => {
               return;
             }
         
-            const decoded = jwtDecode(token, '@deekshigowda'); 
+            const decoded = jwtDecode(token,'@deekshigowda'); 
             if (!decoded) {
               console.error('Token verification failed');
               return;

@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 const signupschema=new mongoose.Schema({
-    name:String,
+    email:String,
     fassion:Array,
     accessories:Array,
     homeproducts:Array,
