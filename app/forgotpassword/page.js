@@ -90,7 +90,7 @@ export default function Example() {
                 >
                   Get Password
                 </button>
-                <div classname="text-red-600 ">*Your password will be sent to Your gmail please check it</div>
+                <div classname="text-red-600 bg-black ">*Your password will be sent to Your gmail please check it</div>
               </div>
             </form>
   

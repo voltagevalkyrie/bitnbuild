@@ -21,14 +21,6 @@ export default function Example() {
     })
     if(data.ok){
       toast("Done!")
-      const data = await fetch("/api/addexpenditure", {
-        method: "post",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({email})
-      })
       setemail("")
       setname("")
       setpassword("")
