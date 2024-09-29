@@ -63,7 +63,7 @@ export default function Example() {
                 />
               </div>
             </div>
-            <div className="">
+            <div className="text-[#ffffff]">
               <label htmlFor="email" className="text-[15px] font-medium text-[#303030]">
                 Email address
               </label>
