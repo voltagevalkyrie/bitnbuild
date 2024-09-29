@@ -44,7 +44,7 @@ export default function Example() {
         </h2>
       </div>
 
-      <div className="mt-5 cshadow max-[1000px]:w-[70%] max-[500px]:w-[90%] w-[30%]  h-[70vh] lap:mx-auto bg-[#00000007] shadow1 rounded-xl flex items-center justify-center max-[1000px]:px-5">
+      <div className="mt-5 max-[1000px]:w-[70%] max-[500px]:w-[90%] w-[30%]  h-[70vh] lap:mx-auto bg-[#00000007] rounded-xl flex items-center justify-center max-[1000px]:px-5">
       <div className=" lap:w-full lap:max-w-sm h-full">
           <form onSubmit={Submit} method="POST" className="space-y-6 flex flex-col gap-2 pt-10">
             <div className="">
@@ -59,7 +59,7 @@ export default function Example() {
                   value={name}
                   onChange={(e) => { setname(e.target.value) }}
                   required
-                  className="block w-full rounded-md border-0 p-3 text-gray-900 font-medium shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none focus:ring-[#0000002b] lap:text-sm lap:leading-6"
+                  className="block w-full rounded-md border-0 p-3 text-gray-900 font-medium ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none focus:ring-[#0000002b] lap:text-sm lap:leading-6"
                 />
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function Example() {
                   type="email"
                   required
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 p-3 text-gray-900 font-medium shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none focus:ring-[#0000002b] lap:text-sm lap:leading-6"
+                  className="block w-full rounded-md border-0 p-3 text-gray-900 font-medium ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none focus:ring-[#0000002b] lap:text-sm lap:leading-6"
                 />
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function Example() {
                   type="password"
                   required
                   autoComplete="current-password"
-                  className="block w-full rounded-md border-0 p-3 text-gray-900 font-medium shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none focus:ring-[#0000002b] lap:text-sm lap:leading-6"
+                  className="block w-full rounded-md border-0 p-3 text-gray-900 font-medium ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none focus:ring-[#0000002b] lap:text-sm lap:leading-6"
                 />
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function Example() {
             <div>
               <button
                 type="submit"
-                className="smooth flex w-full justify-center rounded-md bg-indigo-600 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#000] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="smooth flex w-full justify-center rounded-md bg-indigo-600 py-2 text-sm font-semibold leading-6 text-white hover:bg-[#000] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign up
               </button>
