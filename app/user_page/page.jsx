@@ -164,7 +164,7 @@ setdisplay(result.response.text())
       <Profile />
       {display && <div className="py-2 text-[10px]   text-center w-[60%] ">{display}</div>}
       <div className="flex w-[75%]  h-[85vh] items-center justify-center max-[1000px]:w-[100%] ">
-        <div className="items-center max-[550px]:w-[90%] max-[550px]:h-[90vh] w-[85%] h-[85%] bg-[#0000000d] cshadow rounded-sm py-2 max-[550px]:mt-14 flex flex-col gap-3 ">
+        <div className="items-center max-[550px]:w-[90%] max-[550px]:h-[90vh] w-[85%] h-[85%] bg-[#0000000d]  rounded-sm py-2 max-[550px]:mt-14 flex flex-col gap-3 ">
         
         <div className="w-full max-w-sm min-w-[200px] daam relative hidden max-[550px]:block -z-40">
             <div className="relative flex">
@@ -190,7 +190,7 @@ setdisplay(result.response.text())
               {categories.map((item, index) => (
                 <button key={index} onClick={() => handleCategoryClick(item)}>
                   <div className="flex flex-col justify-center gap-2">
-                    <img className="w-[120px] h-[120px] max-[1000px]:h-[100px] max-[1000px]:w-[100px] rounded-full catshadow" src={item.img} alt={item.name} />
+                    <img className="w-[120px] h-[120px] max-[1000px]:h-[100px] max-[1000px]:w-[100px] rounded-full " src={item.img} alt={item.name} />
                     <div className="text-center text-[15px] font-medium">{item.name}</div>
                   </div>
                 </button>
