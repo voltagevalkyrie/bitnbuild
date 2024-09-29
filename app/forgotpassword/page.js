@@ -36,7 +36,7 @@ export default function Example() {
 
   }
   return (
-    <div className="flex bg-[#f4f4f4] h-[100vh] flex-col justify-center items-center w-[100vw]">
+    <div className="flex bg-[#f4f4f4] h-[100vh] flex-col justify-center items-center w-[100vw] ">
 
       <div className="text-center">
         <h2 className=" text-2xl  font-bold ">
@@ -44,8 +44,8 @@ export default function Example() {
         </h2>
       </div>
 
-      <div className="mt-5 w-[30%] h-[70vh] lap:mx-auto bg-[#00000007] shadow1 rounded-xl flex items-center justify-center">
-        <div className=" lap:w-full lap:max-w-sm h-full">
+      <div className="mt-5 cshadow max-[1000px]:w-[70%]  max-[500px]:w-[90%] w-[30%]  h-[70vh] lap:mx-auto bg-[#00000007] shadow1 rounded-xl flex items-center justify-center max-[1000px]:px-5">
+      <div className=" lap:w-full lap:max-w-sm h-full">
 
           <form onSubmit={Submit} method="POST" className=" space-y-6 flex flex-col gap-2 pt-10">
             <div className="">
@@ -68,7 +68,7 @@ export default function Example() {
               <label htmlFor="email" className="block text-sm font-medium leading-6  text-gray-900">
                 Email address
               </label>
-              <div className="mt-2 ">
+              <div className="mt-2  max-[1000px]:w-[62vw] ">
                 <input
                   id="email"
                   name="email"

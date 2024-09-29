@@ -1,5 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import {Lexend, Montserrat} from 'next/font/google'
+
+const lexend = Lexend({ subsets: ['latin'] })
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,8 +24,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${lexend.className}${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      <link rel="icon" href="/codejslogo.jpg" sizes="any" />
         {children}
       </body>
     </html>

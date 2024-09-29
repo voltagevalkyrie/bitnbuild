@@ -57,8 +57,8 @@ const Page = () => {
     <>
       <div className="h-screen w-screen flex">
         {/* Sidebar */}
-        <div className="h-screen bg-black text-white w-[20%]">
-          <div className="h-[10%] w-[100%] p-5 font-serif text-pretty text-2xl">Category</div>
+        <div className="h-screen bg-black text-white w-[25%]">
+          <div className="h-[10%] w-[100%] p-5 font-serif text-pretty text-2xl">Your Categories</div>
           <div className="h-[10%] w-[100%] p-5 font-serif text-pretty text-xl">
             <button
               onClick={() => setSelected("fassion")}
@@ -70,7 +70,7 @@ const Page = () => {
                 cursor: "pointer",
               }}
             >
-              Fassion
+              Fashion
             </button>
           </div>
           <div className="h-[10%] w-[100%] p-5 font-serif text-pretty text-xl">
@@ -133,8 +133,8 @@ const Page = () => {
 
         {/* Main Content */}
         <div className="h-screen w-[80%]">
-          <div className="w-[100%] h-[10%] border border-white flex text-white bg-black">
-            <div className="h-[100%] w-[40%] p-5 font-serif text-pretty text-xl">CodeJS</div>
+          <div className="w-[100%] h-[10%] border border-white flex text-black bg-[#fff]">
+            <div className="h-[100%] w-[40%] p-5 font-serif text-pretty text-3xl">CodeJS</div>
             <button className="h-[100%] w-[20%] p-5 font-serif text-pretty text-md">GitHub</button>
             <button className="h-[100%] w-[20%] p-5 font-serif text-pretty text-md">Contact</button>
             <button onClick={Logout} className="h-[100%] w-[20%] p-5 font-serif text-pretty text-md">Logout</button>
@@ -160,7 +160,7 @@ const Page = () => {
               </ul>
             )}
           </div>
-          <div className='grid w-[100%] text-white font-serif text-md place-items-center'><button onClick={address} className='bg-green-500 grid p-2 rounded-3xl place-items-center w-[20%]'>We can take this items</button></div>
+          <div className='grid w-[100%] text-white font-serif text-md place-items-center'><button onClick={address} className='bg-green-500 grid py-2 px-7 rounded-3xl place-items-center'>You can buy this product</button></div>
         </div>
       </div>
     </>

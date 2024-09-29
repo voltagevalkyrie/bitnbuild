@@ -70,7 +70,7 @@ const Page = () => {
                 cursor: "pointer",
               }}
             >
-              Fassion
+              Fashion
             </button>
           </div>
           <div className="h-[10%] w-[100%] p-5 font-serif text-pretty text-xl">
