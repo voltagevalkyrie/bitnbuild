@@ -8,12 +8,12 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 import { FaSearch } from "react-icons/fa";
 
 const ImageGenerator = () => {
-  const [output, setOutput] = useState([]); // To store AI response
+  const [output, setOutput] = useState([]); 
   const [loading, setLoading] = useState(false);
   const [data1, setdata1] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState(null); // Track selected category
-  const [fileInput, setFileInput] = useState(null); // Store the uploaded image file
-  const [showUploadForm, setShowUploadForm] = useState(false); // Toggle form visibility
+  const [selectedCategory, setSelectedCategory] = useState(null); 
+  const [fileInput, setFileInput] = useState(null); 
+  const [showUploadForm, setShowUploadForm] = useState(false); 
   const [input, setinput] = useState("")
   const [display, setdisplay] = useState("")
   const categories = [
