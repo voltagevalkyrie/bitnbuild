@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 
 // Set your API key here (use environment variables in production)
-const API_KEY = process.env.GOOGLE_API_KEY || 'AIzaSyAcmL9JUzosLrJuBEUDxmLCBXTKQFPtx-E';
+const API_KEY = process.env.GOOGLE_API_KEY || 'AIzaSyBqesLtJwXmltzUG21f-1T0vNUvRXTwotM';
 
 export async function POST(req) {
   try {

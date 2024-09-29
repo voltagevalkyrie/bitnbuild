@@ -137,7 +137,7 @@ setdisplay(result.response.text())
           <div className="flex justify-center">
             <span className="text-[45px] z-20 logo">CodeJS</span>
           </div>
-          <div className="w-full max-w-sm min-w-[200px] relative">
+          <div className="mr-[10vw] w-full max-[600px]:w-[66vw] max-w-sm min-w-[200px] relative max-[500px]:hidden">
             <div className="relative flex">
               <input
                 type="text"
@@ -150,10 +150,10 @@ setdisplay(result.response.text())
                 className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-3 pr-10 py-2"
                 placeholder="Enter the product name"
               />
-              <button onClick={submit} className=" p-3 mx-2 bg-black rounded-full text-white"><FaSearch /></button>
+              <button onClick={submit} className=" absolute right-1 top-1 rounded bg-slate-800 p-1.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"><FaSearch /></button>
             </div>
           </div>
-          <div className="flex justify-center items-center pr-10 gap-10 text-[15px]">
+          <div className='flex justify-center items-center daam pr-10 gap-10 text-[15px] max-[600px]:hidden max-[1000px]:gap-5 max-[1000px]:pr-0 '>
             <a href="/" className="aanim relative focus:text-[#696969]">Home</a>
             <a href="https://github.com/voltagevalkyrie/bitnbuild" target="./main" className="aanim relative focus:text-[#696969]">GitHub</a>
             <a href="/collaborators" className="aanim relative focus:text-[#696969]">Collaborators</a>
@@ -162,17 +162,35 @@ setdisplay(result.response.text())
       </nav>
 
       <Profile />
-      {display && <div className="h-[10%] py-2 text-[10px] font-serif text-center w-[60%]">{display}</div>}
-      <div className="flex w-[75%] h-[85vh] items-center justify-center">
-        <div className="w-[85%] h-[85%] bg-[#0000000d] cshadow rounded-sm py-2 flex flex-col gap-3 centerbg">
-          <div className="text-center text-[30px] font-semibold">Your Categories</div>
+      {display && <div className="py-2 text-[10px]   text-center w-[60%] ">{display}</div>}
+      <div className="flex w-[75%]  h-[85vh] items-center justify-center max-[1000px]:w-[100%] ">
+        <div className="items-center max-[550px]:w-[90%] max-[550px]:h-[90vh] w-[85%] h-[85%] bg-[#0000000d] cshadow rounded-sm py-2 max-[550px]:mt-14 flex flex-col gap-3 ">
+        
+        <div className="w-full max-w-sm min-w-[200px] daam relative hidden max-[550px]:block -z-40">
+            <div className="relative flex">
+              <input
+                type="text"
+                value={input}
+                onChange={(e)=>{
+                  setinput(e.target.value)
+                  console.log(input);
+                  
+                }}
+                className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-3 pr-10 py-2"
+                placeholder="Enter your text"
+              />
+              <button onClick={submit} className="absolute right-1 top-1 rounded bg-slate-800 p-1.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"><FaSearch /></button>
+            </div>
+          </div>
+          <div className="text-center text-[30px] font-semibold centernm">Your Categories</div>
 
-          <div className="w-[100%] h-[100%] flex flex-col gap-20 ">
-            <div className="flex w-full h-1/3 justify-center gap-14">
+          <div className="w-[100%] h-[100%] flex flex-col gap-20 max-[550px]:gap-0 ">
+          
+          <div className='flex max-[550px]: flex-wrap w-full h-1/3 justify-center gap-10 md:gap-10 lg:gap-14 max-[550px]:mb-10'>
               {categories.map((item, index) => (
                 <button key={index} onClick={() => handleCategoryClick(item)}>
                   <div className="flex flex-col justify-center gap-2">
-                    <img className="w-[100px] h-[100px] rounded-full catshadow" src={item.img} alt={item.name} />
+                    <img className="w-[120px] h-[120px] max-[1000px]:h-[100px] max-[1000px]:w-[100px] rounded-full catshadow" src={item.img} alt={item.name} />
                     <div className="text-center text-[15px] font-medium">{item.name}</div>
                   </div>
                 </button>

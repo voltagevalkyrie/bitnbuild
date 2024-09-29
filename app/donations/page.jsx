@@ -133,8 +133,8 @@ const Page = () => {
 
         {/* Main Content */}
         <div className="h-screen w-[80%]">
-          <div className="w-[100%] h-[10%] border border-white flex text-white bg-black">
-            <div className="h-[100%] w-[40%] p-5 font-serif text-pretty text-xl">CodeJS</div>
+          <div className="w-[100%] h-[10%] border flex text-black bg-white">
+            <div className="h-[100%] w-[40%] p-5 font-serif text-pretty text-3xl">CodeJS</div>
             <button className="h-[100%] w-[20%] p-5 font-serif text-pretty text-md">GitHub</button>
             <button className="h-[100%] w-[20%] p-5 font-serif text-pretty text-md">Contact</button>
             <button onClick={Logout} className="h-[100%] w-[20%] p-5 font-serif text-pretty text-md">Logout</button>
@@ -147,10 +147,10 @@ const Page = () => {
             ) : error ? (
               <div className="text-red-500 text-lg">{error}</div>
             ) : (
-              <ul className="list-disc list-inside bg-gray-100 p-4 rounded-md shadow-md">
+              <ul className="list-disc list-inside bg-gray-100 p-4 px-10 rounded-md shadow-md font-semibold text-xl mb-10"> My Donations
                 {items.length > 0 ? (
                   items.map((item, index) => (
-                    <li key={index} className="text-gray-700 text-lg">
+                    <li key={index} className="text-[#20b12c] font-medium text-lg">
                       {item}
                     </li>
                   ))
