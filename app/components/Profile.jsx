@@ -53,7 +53,7 @@ const Profile = () => {
                 <div className="w-[90%] h-[70%] bg-[#262626] flex flex-col pt-7 items-center gap-5 p-2 rounded-xl">
 
 
-                    <a href="/possessions">
+                    <a href="/#">
                         <div className='text-[#ffffff] flex gap-2 items-center '>
                             <span className='text-[18px]' ><PiCrownFill /></span>
                             <span className='text-[15px]'>My Posessions</span>
@@ -61,7 +61,7 @@ const Profile = () => {
                     </a>
                     <div className='h-[1.5px] w-[75%] bg-[#ffffff] '></div>
 
-                    <a href="/favorites">
+                    <a href="/#">
                         <div className='text-[#ffffff] flex gap-2 items-center '>
                             <span className='text-[18px]' ><PiHeartFill /></span>
                             <span className='text-[15px]'>My Favorites</span>
