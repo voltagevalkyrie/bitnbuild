@@ -44,7 +44,7 @@ export default function Example() {
         </h2>
       </div>
 
-      <div className="mt-5 cshadow max-[1000px]:w-[70%] max-[500px]:w-[90%] w-[30%]  h-[70vh] lap:mx-auto bg-[#00000007] shadow1 rounded-xl flex items-center justify-center max-[1000px]:px-5">
+      <div className="mt-5 max-[1000px]:w-[70%] max-[500px]:w-[90%] w-[30%]  h-[70vh] lap:mx-auto bg-[#00000007] rounded-xl flex items-center justify-center max-[1000px]:px-5">
       <div className=" lap:w-full lap:max-w-sm h-full">
           <form onSubmit={Submit} method="POST" className="space-y-6 flex flex-col gap-2 pt-10">
             <div className="">
