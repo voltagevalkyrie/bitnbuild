@@ -16,6 +16,7 @@ const ImageGenerator = () => {
   const [showUploadForm, setShowUploadForm] = useState(false); 
   const [input, setinput] = useState("")
   const [display, setdisplay] = useState("")
+  const [bgColor, setBgColor] = useState('bg-blue-800');
   const categories = [
     { id: 1, name: "fashion", path: "/fashion", img: "/cloth.jpeg", questions: "what are the Fashion items present in this image , identify it with colour and give me it in the form for array without any extra text" },
     { id: 2, name: "accessories", path: "/accessories", img: "/accessories.jpg", questions: "what are the accessories items present in this image , identify it  and give me it in the form for array without any extra text" },
@@ -29,6 +30,7 @@ const submit=async()=>{
       console.error('No token found');
       return;
     }
+    
   
     const decoded = jwtDecode(token, '@deekshigowda');
   const respon=await fetch("/api/getdata", {
@@ -115,11 +117,17 @@ setdisplay(result.response.text())
 
       const result = await response.json();
       setOutput(result.response);
+      if (response.ok) {
+        setBgColor('bg-blue-800')
+      }
     } catch (e) {
       setOutput(`Error: ${e.message}`);
     } finally {
       setLoading(false);
     }
+  };
+  const changeColor = () => {
+    setBgColor('bg-red-800'); // Change to red using Tailwind class
   };
 
   return (
@@ -140,7 +148,7 @@ setdisplay(result.response.text())
                   
                 }}
                 className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-3 pr-10 py-2"
-                placeholder="Enter your text"
+                placeholder="Enter the product name"
               />
               <button onClick={submit} className=" p-3 mx-2 bg-black rounded-full text-white"><FaSearch /></button>
             </div>
@@ -180,7 +188,7 @@ setdisplay(result.response.text())
               <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                 <input type="file" accept="image/*" onChange={handleFileChange} required />
 
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2">
+                <button onClick={changeColor} type="submit" className={`bg-blue-500 ${bgColor}  text-white px-4 py-2`}>
                   Submit
                 </button>
                 
