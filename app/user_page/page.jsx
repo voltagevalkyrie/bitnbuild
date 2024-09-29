@@ -46,7 +46,7 @@ const submit=async()=>{
   console.log(data.user.value);
   setdata1(data.user.value)
 const good= JSON.stringify(data1, null, 2)
-  const genAI = new GoogleGenerativeAI("AIzaSyBqesLtJwXmltzUG21f-1T0vNUvRXTwotM");
+  const genAI = new GoogleGenerativeAI("AIzaSyAhHCpc3RM5WjgpGLPQv4nyMbUnqoX9pQE");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const prompt = `${input}.if it is there in that data then just say "No you already have one" if it is not there in that data just say "You can have it" comparing to this ${good}. `;

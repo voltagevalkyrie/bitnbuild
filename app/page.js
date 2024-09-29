@@ -112,7 +112,7 @@ export default function Example() {
       <div className="flex bg-[#f4f4f4] h-[100vh] flex-col justify-center items-center ">
         <ToastContainer />
         <div className=" flex justify-center gap-1">
-          <button className="cshadow smooth shadow2 border-none outline-none"
+          <button className="smooth  border-none outline-none"
             onClick={() => setSelected("User")}
             style={{
               width: "200px",
