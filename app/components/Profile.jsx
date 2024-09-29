@@ -78,7 +78,7 @@ const Profile = () => {
                     </a>
                     <div className='h-[1.5px] w-[75%] bg-[#ffffff] '></div>
 
-                    <a href="/donations">
+                    <a href="/#">
                         <div className='text-[#ffffff] flex gap-2 items-center '>
                             <span className='text-[18px]' ><PiCheckCircleFill /></span>
                             <span className='text-[15px]'>My Donations</span>
